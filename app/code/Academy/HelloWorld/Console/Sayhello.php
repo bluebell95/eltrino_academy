@@ -6,15 +6,23 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputOption;
+use \Academy\Helper\Helper\Data;
 
-class Sayhello extends Command
+class Sayhello extends \Symfony\Component\Console\Command\Command
 {
 
     const NAME = 'name';
+    private $helper;
+    
+    public function __construct(Data $helper)
+    {
+        parent::__construct();
+        $this->helper = $helper;
+    }
+
 
     protected function configure()
     {
-
         $options = [
             new InputOption(
                 self::NAME,
@@ -35,8 +43,7 @@ class Sayhello extends Command
     {
         if ($name = $input->getOption(self::NAME)) {
 
-            $output->writeln("Hello " . $name);
-
+            $output->writeln("Hello " . $this->helper->RandomFunc());
 
         } else {
 
