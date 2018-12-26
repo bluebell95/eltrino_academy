@@ -34,4 +34,6 @@ $params[Bootstrap::INIT_PARAM_FILESYSTEM_DIR_PATHS] = [
 $bootstrap = \Magento\Framework\App\Bootstrap::create(BP, $params);
 /** @var \Magento\Framework\App\Http $app */
 $app = $bootstrap->createApplication(\Magento\Framework\App\Http::class);
+\ini_set('display_errors', true);
+\ini_set('error_reporting', E_ALL);
 $bootstrap->run($app);
